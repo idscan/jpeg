@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_BUILD_TYPE Release CACHE STRING
   "Choose the type of build: None Debug Release RelWithDebInfo MinSizeRel")
 
-project(JPEG VERSION 9.0 LANGUAGES C)
+project(Jpeg VERSION 9.0 LANGUAGES C)
 set(srcdir ${JPEG_SOURCE_DIR})
 
 #-----------------------------------------------------------------------------
@@ -377,7 +377,7 @@ set(targets_export_name "${PROJECT_NAME}Targets")
 
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-  "${CMAKE_BINARY_DIR}/lib/cmake/JPEGConfigVersion.cmake"
+  "${CMAKE_BINARY_DIR}/lib/cmake/${PROJECT_NAME}ConfigVersion.cmake"
   COMPATIBILITY AnyNewerVersion
 )
 
@@ -386,8 +386,8 @@ set(INCLUDE_INSTALL_DIR "include")
 # Use:
 # * targets_export_name
 configure_package_config_file("cmake/Config.cmake.in"
-  "${CMAKE_BINARY_DIR}/lib/cmake/JPEGConfig.cmake"
-  INSTALL_DESTINATION lib/cmake/JPEG
+  "${CMAKE_BINARY_DIR}/lib/cmake/${PROJECT_NAME}Config.cmake"
+  INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
   PATH_VARS INCLUDE_INSTALL_DIR
 )
 
@@ -407,10 +407,10 @@ install(TARGETS ${libs_to_install}
   PUBLIC_HEADER DESTINATION include COMPONENT Development
   BUNDLE DESTINATION bin COMPONENT Runtime
 )
-install(EXPORT ${targets_export_name} NAMESPACE "JPEG::" DESTINATION lib/cmake/JPEG)
-install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/JPEGConfigVersion.cmake"
-  "${CMAKE_BINARY_DIR}/lib/cmake/JPEGConfig.cmake"
-  DESTINATION lib/cmake/JPEG)
+install(EXPORT ${targets_export_name} NAMESPACE "JPEG::" DESTINATION lib/cmake/${PROJECT_NAME})
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/${PROJECT_NAME}ConfigVersion.cmake"
+  "${CMAKE_BINARY_DIR}/lib/cmake/${PROJECT_NAME}Config.cmake"
+  DESTINATION lib/cmake/${PROJECT_NAME})
 
 ################### TESTS
 enable_testing()
