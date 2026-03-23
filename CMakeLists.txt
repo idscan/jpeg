@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_BUILD_TYPE Release CACHE STRING
   "Choose the type of build: None Debug Release RelWithDebInfo MinSizeRel")
 
-project(JPEG VERSION 9.0 LANGUAGES C)
+project(JPEG VERSION 10.0 LANGUAGES C)
 set(srcdir ${JPEG_SOURCE_DIR})
 
 #-----------------------------------------------------------------------------
@@ -314,7 +314,7 @@ set(TESTFILES testorig.jpg testimg.ppm testimg.bmp testimg.jpg testprog.jpg
 set(jpeg_LIB_SRCS ${LIBSOURCES} jquant2.c ${INSTINCLUDES} ${OTHERINCLUDES})
 add_library(jpeg ${jpeg_LIB_SRCS})
 
-set_target_properties(jpeg PROPERTIES VERSION 9.0 SOVERSION 9
+set_target_properties(jpeg PROPERTIES VERSION 10.0 SOVERSION 10
   PUBLIC_HEADER "${INSTINCLUDES}"
   DEFINE_SYMBOL "JPEG_DLL_EXPORTS"
   FOLDER Libraries
